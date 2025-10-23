@@ -14,7 +14,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -23,12 +23,105 @@
             justify-content: center;
             overflow-x: hidden;
             padding: 20px;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            opacity: var(--opacity);
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+        }
+
+        .star.twinkle-1 {
+            --duration: 3s;
+            --opacity: 0.3;
+        }
+
+        .star.twinkle-2 {
+            --duration: 4s;
+            --opacity: 0.5;
+        }
+
+        .star.twinkle-3 {
+            --duration: 5s;
+            --opacity: 0.7;
+        }
+
+        .star.twinkle-4 {
+            --duration: 6s;
+            --opacity: 0.9;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            border-radius: 50%;
+            animation: shooting var(--shooting-duration) linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: var(--opacity);
+                transform: scale(1);
+            }
+            50% {
+                opacity: calc(var(--opacity) * 0.3);
+                transform: scale(0.8);
+            }
+        }
+
+        @keyframes shooting {
+            0% {
+                transform: translateX(-100px) translateY(-100px) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(100vw) translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
         }
         
         .container {
             max-width: 900px;
             width: 100%;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
         
         .header {
@@ -49,13 +142,17 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #e94560;
-            box-shadow: 0 0 25px rgba(233, 69, 96, 0.5);
+            box-shadow: 
+                0 0 25px rgba(233, 69, 96, 0.5),
+                0 0 50px rgba(83, 52, 131, 0.3);
             transition: all 0.3s ease;
         }
         
         .avatar:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(233, 69, 96, 0.7);
+            box-shadow: 
+                0 0 35px rgba(233, 69, 96, 0.7),
+                0 0 70px rgba(83, 52, 131, 0.4);
         }
         
         .avatar-decoration {
@@ -74,17 +171,18 @@
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #e94560, #533483);
+            background: linear-gradient(45deg, #e94560, #ff6b9d, #533483);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .tagline {
             font-size: 1.2rem;
-            opacity: 0.8;
+            opacity: 0.9;
             margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .content {
@@ -100,8 +198,10 @@
             padding: 25px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
             text-decoration: none;
@@ -124,7 +224,10 @@
         .card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(233, 69, 96, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
         
         .card-title {
@@ -139,14 +242,16 @@
         .card-icon {
             font-size: 1.8rem;
             color: #e94560;
+            text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
         }
         
         .card-description {
             font-size: 0.95rem;
-            opacity: 0.8;
+            opacity: 0.9;
             line-height: 1.5;
             margin-bottom: 15px;
             flex-grow: 1;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .status {
@@ -164,6 +269,13 @@
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .status:hover {
+            background: rgba(233, 69, 96, 0.3);
+            transform: translateY(-2px);
         }
         
         .status i {
@@ -173,8 +285,9 @@
         .footer {
             margin-top: 50px;
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.8;
             animation: fadeIn 1.5s ease-out;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .pulse {
@@ -185,6 +298,7 @@
             background: #4CAF50;
             margin-right: 8px;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
         }
         
         @keyframes fadeIn {
@@ -234,6 +348,8 @@
     </style>
 </head>
 <body>
+    <div class="stars" id="stars"></div>
+    
     <div class="container">
         <div class="header">
             <div class="avatar-container">
@@ -241,7 +357,7 @@
                 <img src="img/ava.webp" alt="Аватар ЕDNA" class="avatar">
             </div>
             <h1 class="logo floating">ЕDNA</h1>
-            <p class="tagline">...</p>
+            <p class="tagline">Творчество среди звезд</p>
         </div>
         
         <div class="content">
@@ -304,10 +420,57 @@
     </div>
 
     <script>
-        // Добавляем небольшую интерактивность
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const sizes = ['small', 'medium', 'large'];
+                star.classList.add(sizes[Math.floor(Math.random() * sizes.length)]);
+                
+                const twinkles = ['twinkle-1', 'twinkle-2', 'twinkle-3', 'twinkle-4'];
+                star.classList.add(twinkles[Math.floor(Math.random() * twinkles.length)]);
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                star.style.animationDelay = Math.random() * 5 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+            
+            function createShootingStar() {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting-star';
+                
+                shootingStar.style.left = Math.random() * 20 + '%';
+                shootingStar.style.top = Math.random() * 20 + '%';
+                
+                const duration = Math.random() * 3 + 2;
+                shootingStar.style.setProperty('--shooting-duration', duration + 's');
+                
+                starsContainer.appendChild(shootingStar);
+                
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, duration * 1000);
+            }
+            
+            setInterval(createShootingStar, Math.random() * 5000 + 3000);
+            
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createShootingStar, Math.random() * 2000);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card');
             const avatar = document.querySelector('.avatar');
+            
+            createStars();
             
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
@@ -319,7 +482,6 @@
                 });
             });
             
-            // Анимация при наведении на аватар
             avatar.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.05)';
                 this.style.boxShadow = '0 0 35px rgba(233, 69, 96, 0.7)';
