@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио | ЕDNA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #e94560;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #e94560, #533483);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .portfolio-card {
+            height: 400px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .portfolio-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-front {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #533483, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+        
+        .card-hint {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+        
+        .card-back {
+            background: rgba(233, 69, 96, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            transform: rotateY(180deg);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+        
+        .card-back-title {
+            font-size: 1.5rem;
+            color: #e94560;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .tag {
+            background: rgba(233, 69, 96, 0.3);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .flip-icon {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: #e94560;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .portfolio-card {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> На главную
+            </a>
+            <h1 class="page-title">Портфолио</h1>
+            <p class="page-subtitle">Мои работы - нажмите на карточку, чтобы увидеть описание</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- Карточка 1 -->
+            <div class="portfolio-card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/1.jpeg" alt="Работа 1" class="card-image">
+                        <h3 class="card-title">Название работы</h3>
+                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
+                        <div class="flip-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="card-back-title">Название работы</h3>
+                        <p class="card-description">
+                            [Описание работы] - здесь будет размещена информация о проекте, 
+                            используемых техниках и концепции. Описание может включать 
+                            детали о процессе создания, вдохновении и технических аспектах.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">[Тег 1]</span>
+                            <span class="tag">[Тег 2]</span>
+                            <span class="tag">[Тег 3]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка 2 -->
+            <div class="portfolio-card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/2.jpeg" alt="Работа 2" class="card-image">
+                        <h3 class="card-title">Название работы</h3>
+                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
+                        <div class="flip-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="card-back-title">Название работы</h3>
+                        <p class="card-description">
+                            [Описание работы] - здесь будет размещена информация о проекте, 
+                            используемых техниках и концепции. Описание может включать 
+                            детали о процессе создания, вдохновении и технических аспектах.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">[Тег 1]</span>
+                            <span class="tag">[Тег 2]</span>
+                            <span class="tag">[Тег 3]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка 3 -->
+            <div class="portfolio-card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/3.jpeg" alt="Работа 3" class="card-image">
+                        <h3 class="card-title">Название работы</h3>
+                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
+                        <div class="flip-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="card-back-title">Название работы</h3>
+                        <p class="card-description">
+                            [Описание работы] - здесь будет размещена информация о проекте, 
+                            используемых техниках и концепции. Описание может включать 
+                            детали о процессе создания, вдохновении и технических аспектах.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">[Тег 1]</span>
+                            <span class="tag">[Тег 2]</span>
+                            <span class="tag">[Тег 3]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка 4 -->
+            <div class="portfolio-card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/4.jpeg" alt="Работа 4" class="card-image">
+                        <h3 class="card-title">Название работы</h3>
+                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
+                        <div class="flip-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="card-back-title">Название работы</h3>
+                        <p class="card-description">
+                            [Описание работы] - здесь будет размещена информация о проекте, 
+                            используемых техниках и концепции. Описание может включать 
+                            детали о процессе создания, вдохновении и технических аспектах.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">[Тег 1]</span>
+                            <span class="tag">[Тег 2]</span>
+                            <span class="tag">[Тег 3]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка 5 -->
+            <div class="portfolio-card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/5.jpeg" alt="Работа 5" class="card-image">
+                        <h3 class="card-title">Название работы</h3>
+                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
+                        <div class="flip-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="card-back-title">Название работы</h3>
+                        <p class="card-description">
+                            [Описание работы] - здесь будет размещена информация о проекте, 
+                            используемых техниках и концепции. Описание может включать 
+                            детали о процессе создания, вдохновении и технических аспектах.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">[Тег 1]</span>
+                            <span class="tag">[Тег 2]</span>
+                            <span class="tag">[Тег 3]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка 6 -->
+            <div class="portfolio-card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/6.jpeg" alt="Работа 6" class="card-image">
+                        <h3 class="card-title">Название работы</h3>
+                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
+                        <div class="flip-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="card-back-title">Название работы</h3>
+                        <p class="card-description">
+                            [Описание работы] - здесь будет размещена информация о проекте, 
+                            используемых техниках и концепции. Описание может включать 
+                            детали о процессе создания, вдохновении и технических аспектах.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">[Тег 1]</span>
+                            <span class="tag">[Тег 2]</span>
+                            <span class="tag">[Тег 3]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Сделано с ❤️ | ЕDNA</p>
+        </div>
+    </div>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+        
+        // Добавляем анимацию появления карточек при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.portfolio-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
