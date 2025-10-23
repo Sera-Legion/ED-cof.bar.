@@ -26,7 +26,7 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             text-align: center;
         }
@@ -84,38 +84,14 @@
         .tagline {
             font-size: 1.2rem;
             opacity: 0.8;
-            margin-bottom: 20px;
-        }
-        
-        .website-link {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .website-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .website-link i {
-            margin-right: 8px;
+            margin-bottom: 30px;
         }
         
         .content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 30px;
+            margin-top: 10px;
         }
         
         .card {
@@ -128,6 +104,11 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 300px;
         }
         
         .card::before {
@@ -165,6 +146,7 @@
             opacity: 0.8;
             line-height: 1.5;
             margin-bottom: 15px;
+            flex-grow: 1;
         }
         
         .status {
@@ -175,7 +157,13 @@
             padding: 8px 15px;
             border-radius: 50px;
             font-size: 0.9rem;
-            margin-top: 10px;
+            margin-top: auto;
+            text-decoration: none;
+            color: inherit;
+            justify-content: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .status i {
@@ -238,6 +226,10 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            .card {
+                height: 280px;
+            }
         }
     </style>
 </head>
@@ -253,20 +245,20 @@
         </div>
         
         <div class="content">
-            <div class="card">
+            <a href="commitions.html" class="card">
                 <h2 class="card-title">
                     <i class="fas fa-palette card-icon"></i> Коммишены
                 </h2>
                 <p class="card-description">
                     Закажите индивидуальную работу в соответствии с вашими пожеланиями и предпочтениями.
                 </p>
-                <a href="commitions.html" class="status">
+                <div class="status">
                     <span class="pulse"></span>
-                    <span>Доступно</span>
-                </a>
-            </div>
+                    <span>На страницу</span>
+                </div>
+            </a>
             
-            <div class="card">
+            <a href="comms.html" class="card">
                 <h2 class="card-title">
                     <i class="fas fa-book card-icon"></i> Памятка для заказчика
                 </h2>
@@ -275,11 +267,11 @@
                 </p>
                 <div class="status">
                     <span class="pulse"></span>
-                    <span>Доступно</span>
+                    <span>На страницу</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="card">
+            <a href="rules.html" class="card">
                 <h2 class="card-title">
                     <i class="fas fa-gavel card-icon"></i> Правила
                 </h2>
@@ -288,9 +280,22 @@
                 </p>
                 <div class="status">
                     <span class="pulse"></span>
-                    <span>Доступно</span>
+                    <span>На страницу</span>
                 </div>
-            </div>
+            </a>
+            
+            <a href="portfolio.html" class="card">
+                <h2 class="card-title">
+                    <i class="fas fa-images card-icon"></i> Портфолио
+                </h2>
+                <p class="card-description">
+                    Посмотрите примеры моих работ и оцените стиль исполнения перед заказом.
+                </p>
+                <div class="status">
+                    <span class="pulse"></span>
+                    <span>На страницу</span>
+                </div>
+            </a>
         </div>
         
         <div class="footer">
