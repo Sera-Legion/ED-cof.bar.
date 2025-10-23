@@ -186,7 +186,15 @@
             font-size: 1.2rem;
             opacity: 0.7;
         }
-         .nav-btn {
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding: 0 10px;
+        }
+        
+        .nav-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -207,9 +215,10 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
+        
         .footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 40px;
             padding: 20px;
             font-size: 0.9rem;
             opacity: 0.7;
@@ -226,6 +235,17 @@
             
             .portfolio-card {
                 height: 350px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 200px;
+                justify-content: center;
             }
         }
         
@@ -409,6 +429,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="nav-buttons">
             <a href="rules.html" class="nav-btn">
                 <i class="fas fa-arrow-left"></i> Правила
@@ -417,6 +438,7 @@
                 Главная <i class="fas fa-arrow-right"></i>
             </a>
         </div>
+        
         <div class="footer">
             <p>Сделано с ❤️ | ЕDNA</p>
         </div>
