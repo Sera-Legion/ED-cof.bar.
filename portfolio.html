@@ -74,7 +74,6 @@
         .portfolio-card {
             height: 400px;
             perspective: 1000px;
-            cursor: pointer;
         }
         
         .card-inner {
@@ -124,6 +123,12 @@
             justify-content: center;
             color: rgba(255, 255, 255, 0.7);
             font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-image:hover {
+            transform: scale(1.03);
         }
         
         .card-title {
@@ -185,6 +190,14 @@
             color: #e94560;
             font-size: 1.2rem;
             opacity: 0.7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .flip-icon:hover {
+            opacity: 1;
+            transform: rotate(180deg);
         }
         
         .nav-buttons {
@@ -224,6 +237,53 @@
             opacity: 0.7;
         }
         
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(233, 69, 96, 0.3);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .close-btn:hover {
+            color: #e94560;
+        }
+        
         @media (max-width: 768px) {
             .portfolio-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -247,6 +307,10 @@
                 width: 200px;
                 justify-content: center;
             }
+            
+            .modal-content {
+                max-width: 95%;
+            }
         }
         
         @media (max-width: 480px) {
@@ -263,18 +327,18 @@
                 <i class="fas fa-arrow-left"></i> На главную
             </a>
             <h1 class="page-title">Портфолио</h1>
-            <p class="page-subtitle">Мои работы - нажмите на карточку, чтобы увидеть описание</p>
+            <p class="page-subtitle">Мои работы - нажмите на картинку для увеличения или на иконку для описания</p>
         </div>
         
         <div class="portfolio-grid">
             <!-- Карточка 1 -->
-            <div class="portfolio-card" onclick="flipCard(this)">
+            <div class="portfolio-card">
                 <div class="card-inner">
                     <div class="card-front">
-                        <img src="img/Alaska_sketch.jpg" alt="Работа 1" class="card-image">
+                        <img src="img/Alaska_sketch.jpg" alt="Работа 1" class="card-image" onclick="openModal(this)">
                         <h3 class="card-title">Название работы</h3>
-                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
-                        <div class="flip-icon">
+                        <p class="card-hint">Нажмите на иконку, чтобы увидеть описание</p>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
                             <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
@@ -289,19 +353,22 @@
                             <span class="tag">[Тег 1]</span>
                             <span class="tag">[Тег 2]</span>
                             <span class="tag">[Тег 3]</span>
+                        </div>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
+                            <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Карточка 2 -->
-            <div class="portfolio-card" onclick="flipCard(this)">
+            <div class="portfolio-card">
                 <div class="card-inner">
                     <div class="card-front">
-                        <img src="img/2.jpeg" alt="Работа 2" class="card-image">
+                        <img src="img/2.jpeg" alt="Работа 2" class="card-image" onclick="openModal(this)">
                         <h3 class="card-title">Название работы</h3>
-                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
-                        <div class="flip-icon">
+                        <p class="card-hint">Нажмите на иконку, чтобы увидеть описание</p>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
                             <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
@@ -316,19 +383,22 @@
                             <span class="tag">[Тег 1]</span>
                             <span class="tag">[Тег 2]</span>
                             <span class="tag">[Тег 3]</span>
+                        </div>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
+                            <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Карточка 3 -->
-            <div class="portfolio-card" onclick="flipCard(this)">
+            <div class="portfolio-card">
                 <div class="card-inner">
                     <div class="card-front">
-                        <img src="img/3.jpeg" alt="Работа 3" class="card-image">
+                        <img src="img/3.jpeg" alt="Работа 3" class="card-image" onclick="openModal(this)">
                         <h3 class="card-title">Название работы</h3>
-                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
-                        <div class="flip-icon">
+                        <p class="card-hint">Нажмите на иконку, чтобы увидеть описание</p>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
                             <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
@@ -343,19 +413,22 @@
                             <span class="tag">[Тег 1]</span>
                             <span class="tag">[Тег 2]</span>
                             <span class="tag">[Тег 3]</span>
+                        </div>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
+                            <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Карточка 4 -->
-            <div class="portfolio-card" onclick="flipCard(this)">
+            <div class="portfolio-card">
                 <div class="card-inner">
                     <div class="card-front">
-                        <img src="img/4.jpeg" alt="Работа 4" class="card-image">
+                        <img src="img/4.jpeg" alt="Работа 4" class="card-image" onclick="openModal(this)">
                         <h3 class="card-title">Название работы</h3>
-                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
-                        <div class="flip-icon">
+                        <p class="card-hint">Нажмите на иконку, чтобы увидеть описание</p>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
                             <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
@@ -370,19 +443,22 @@
                             <span class="tag">[Тег 1]</span>
                             <span class="tag">[Тег 2]</span>
                             <span class="tag">[Тег 3]</span>
+                        </div>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
+                            <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Карточка 5 -->
-            <div class="portfolio-card" onclick="flipCard(this)">
+            <div class="portfolio-card">
                 <div class="card-inner">
                     <div class="card-front">
-                        <img src="img/5.jpeg" alt="Работа 5" class="card-image">
+                        <img src="img/5.jpeg" alt="Работа 5" class="card-image" onclick="openModal(this)">
                         <h3 class="card-title">Название работы</h3>
-                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
-                        <div class="flip-icon">
+                        <p class="card-hint">Нажмите на иконку, чтобы увидеть описание</p>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
                             <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
@@ -397,19 +473,22 @@
                             <span class="tag">[Тег 1]</span>
                             <span class="tag">[Тег 2]</span>
                             <span class="tag">[Тег 3]</span>
+                        </div>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
+                            <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Карточка 6 -->
-            <div class="portfolio-card" onclick="flipCard(this)">
+            <div class="portfolio-card">
                 <div class="card-inner">
                     <div class="card-front">
-                        <img src="img/6.jpeg" alt="Работа 6" class="card-image">
+                        <img src="img/6.jpeg" alt="Работа 6" class="card-image" onclick="openModal(this)">
                         <h3 class="card-title">Название работы</h3>
-                        <p class="card-hint">Нажмите, чтобы увидеть описание</p>
-                        <div class="flip-icon">
+                        <p class="card-hint">Нажмите на иконку, чтобы увидеть описание</p>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
                             <i class="fas fa-sync-alt"></i>
                         </div>
                     </div>
@@ -425,9 +504,18 @@
                             <span class="tag">[Тег 2]</span>
                             <span class="tag">[Тег 3]</span>
                         </div>
+                        <div class="flip-icon" onclick="flipCard(this.parentElement.parentElement.parentElement)">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Модальное окно -->
+        <div id="imageModal" class="modal">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
         </div>
         
         <div class="nav-buttons">
@@ -447,6 +535,26 @@
     <script>
         function flipCard(card) {
             card.classList.toggle('flipped');
+        }
+        
+        // Функции для модального окна
+        function openModal(img) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+        
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+        
+        // Закрытие модального окна при клике вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target === modal) {
+                closeModal();
+            }
         }
         
         // Добавляем анимацию появления карточек при загрузке
