@@ -14,8 +14,8 @@
         }
         
         body {
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #050510 0%, #0a0a1a 30%, #0c0c1f 60%, #080814 100%);
+            color: #e8e8e8;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -59,33 +59,34 @@
         }
 
         .star.twinkle-1 {
-            --duration: 3s;
-            --opacity: 0.3;
+            --duration: 4s;
+            --opacity: 0.2;
         }
 
         .star.twinkle-2 {
-            --duration: 4s;
-            --opacity: 0.5;
+            --duration: 5s;
+            --opacity: 0.4;
         }
 
         .star.twinkle-3 {
-            --duration: 5s;
-            --opacity: 0.7;
+            --duration: 6s;
+            --opacity: 0.6;
         }
 
         .star.twinkle-4 {
-            --duration: 6s;
-            --opacity: 0.9;
+            --duration: 7s;
+            --opacity: 0.8;
         }
 
         .shooting-star {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #fff, transparent);
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
             border-radius: 50%;
             animation: shooting var(--shooting-duration) linear infinite;
             opacity: 0;
+            filter: blur(0.5px);
         }
 
         @keyframes twinkle {
@@ -94,8 +95,8 @@
                 transform: scale(1);
             }
             50% {
-                opacity: calc(var(--opacity) * 0.3);
-                transform: scale(0.8);
+                opacity: calc(var(--opacity) * 0.2);
+                transform: scale(0.7);
             }
         }
 
@@ -105,10 +106,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 1;
+                opacity: 0.8;
             }
             20% {
-                opacity: 0.8;
+                opacity: 0.6;
             }
             100% {
                 transform: translateX(100vw) translateY(100vh) rotate(45deg);
@@ -125,15 +126,15 @@
         }
         
         .header {
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease-out;
+            margin-bottom: 50px;
+            animation: fadeIn 1.2s ease-out;
         }
         
         .avatar-container {
             position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
         }
         
         .avatar {
@@ -141,89 +142,91 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #e94560;
+            border: 4px solid #d4af37;
             box-shadow: 
-                0 0 25px rgba(233, 69, 96, 0.5),
-                0 0 50px rgba(83, 52, 131, 0.3);
-            transition: all 0.3s ease;
+                0 0 30px rgba(212, 175, 55, 0.3),
+                0 0 60px rgba(74, 35, 90, 0.2),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            filter: brightness(1.1) contrast(1.1);
         }
         
         .avatar:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
             box-shadow: 
-                0 0 35px rgba(233, 69, 96, 0.7),
-                0 0 70px rgba(83, 52, 131, 0.4);
+                0 0 40px rgba(212, 175, 55, 0.5),
+                0 0 80px rgba(74, 35, 90, 0.3),
+                inset 0 0 25px rgba(0, 0, 0, 0.6);
         }
         
         .avatar-decoration {
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #e94560, #533483, #0f3460);
+            background: #4a235a;
             z-index: -1;
-            animation: rotate 10s linear infinite;
+            animation: none;
+            opacity: 0.8;
         }
         
         .logo {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 800;
-            margin-bottom: 10px;
-            background: #e94560;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #d4af37, #f7ef8a, #d4af37);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
             position: relative;
             display: inline-block;
+            letter-spacing: 1px;
         }
 
         .logo::after {
-            content: '';
+            content: '✦ •┈┈⋅⋯ ✦ ⋯⋅┈┈• ✦';
             position: absolute;
-            bottom: -5px;
+            bottom: -90%;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #e94560, #533483, transparent);
+            height: 100%;
+            color: #f7ef8a;
             border-radius: 50%;
-            opacity: 0.7;
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 1rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+            letter-spacing: 2px;
         }
         
         .content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 10px;
+            gap: 30px;
+            margin-top: 20px;
             align-items: start;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(145deg, rgba(20, 20, 35, 0.9), rgba(10, 10, 25, 0.95));
+            border-radius: 18px;
+            padding: 30px 25px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(74, 35, 90, 0.3);
             box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 10px 25px rgba(0, 0, 0, 0.4),
+                0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
-            height: 300px;
+            height: 320px;
         }
 
         .card::before {
@@ -232,90 +235,113 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #e94560, #533483);
+            height: 4px;
+            background: #4a235a;
+            box-shadow: 0 0 15px rgba(142, 68, 173, 0.4);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .card:hover::after {
+            left: 100%;
         }
 
         .card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-12px) scale(1.02);
+            background: linear-gradient(145deg, rgba(25, 25, 45, 0.95), rgba(15, 15, 30, 0.98));
             box-shadow: 
-                0 15px 30px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(233, 69, 96, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                0 20px 40px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(74, 35, 90, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            border-color: rgba(212, 175, 55, 0.2);
         }
 
         .card:nth-child(1):hover {
-            transform: translateY(-10px) rotate(1deg);
+            transform: translateY(-12px) rotate(1.5deg) scale(1.02);
         }
 
         .card:nth-child(2):hover {
-            transform: translateY(-10px) rotate(-1deg);
+            transform: translateY(-12px) rotate(-1.5deg) scale(1.02);
         }
 
         .card:nth-child(3):hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-12px) scale(1.03);
         }
 
         .card:nth-child(4):hover {
-            transform: translateY(-10px) rotate(0.5deg) scale(1.01);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 
-                0 15px 30px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(233, 69, 96, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: translateY(-12px) rotate(1deg) scale(1.02);
         }
         
         .card-title {
             font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            color: #ffffff;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .card-icon {
-            font-size: 1.8rem;
-            color: #e94560;
-            text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+            font-size: 1.9rem;
+            color: #ffd78e;
+            text-shadow: 0 0 15px rgba(255, 215, 142, 0.6);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
         }
         
         .card-description {
             font-size: 0.95rem;
-            opacity: 0.9;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
             flex-grow: 1;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            color: #d0d0d0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            font-weight: 300;
         }
         
         .status {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(233, 69, 96, 0.2);
-            padding: 8px 15px;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(74, 35, 90, 0.3), rgba(44, 25, 55, 0.5));
+            padding: 10px 20px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-top: auto;
             text-decoration: none;
-            color: inherit;
+            color: #e8e8e8;
             justify-content: center;
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
-            border: 1px solid rgba(233, 69, 96, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
         }
 
         .status:hover {
-            background: rgba(233, 69, 96, 0.3);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(74, 35, 90, 0.5), rgba(44, 25, 55, 0.7));
+            transform: translateY(-3px);
+            color: #ffffff;
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 5px 15px rgba(74, 35, 90, 0.4);
         }
         
         .status i {
@@ -334,52 +360,70 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
         }
         
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% { 
+                transform: scale(0.9); 
+                box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); 
+            }
+            70% { 
+                transform: scale(1.1); 
+                box-shadow: 0 0 0 12px rgba(39, 174, 96, 0); 
+            }
+            100% { 
+                transform: scale(0.9); 
+                box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); 
+            }
         }
         
         .floating {
-            animation: floating 3s ease-in-out infinite;
+            animation: floating 4s ease-in-out infinite;
         }
         
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
         
         @media (max-width: 768px) {
             .content {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 25px;
                 padding: 0 10px;
             }
             
             .card {
                 height: auto;
-                min-height: 250px;
+                min-height: 280px;
+                padding: 25px 20px;
+            }
+
+            .logo {
+                font-size: 3rem;
+            }
+
+            .avatar-container {
+                width: 140px;
+                height: 140px;
             }
         }
 
         @media (min-width: 1200px) {
             .content {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
+                gap: 35px;
             }
         }
-
-        
     </style>
 </head>
 <body>
@@ -392,7 +436,6 @@
                 <img src="img/ava.jpg" alt="Аватар ЕDNA" class="avatar">
             </div>
             <h1 class="logo floating">ЕDNA</h1>
-            <p class="tagline">. . .</p>
         </div>
         
         <div class="content">
@@ -401,7 +444,7 @@
                     <i class="fas fa-palette card-icon"></i> Коммишены
                 </h2>
                 <p class="card-description">
-                    Закажите индивидуальную работу в соответствии с вашими пожеланиями и предпочтениями.
+                    Закажите индивидуальную работу в соответствии с вашими пожеланиями и предпочтениями. Создадим нечто уникальное вместе.
                 </p>
                 <div class="status">
                     <span class="pulse"></span>
@@ -414,7 +457,7 @@
                     <i class="fas fa-book card-icon"></i> Памятка для заказчика
                 </h2>
                 <p class="card-description">
-                    Важная информация и рекомендации для эффективного взаимодействия и получения идеального результата.
+                    Важная информация и рекомендации для эффективного взаимодействия и получения идеального результата вашей мечты.
                 </p>
                 <div class="status">
                     <span class="pulse"></span>
@@ -427,7 +470,7 @@
                     <i class="fas fa-gavel card-icon"></i> Правила
                 </h2>
                 <p class="card-description">
-                    Основные условия сотрудничества, которые помогут нам работать комфортно и продуктивно.
+                    Основные условия сотрудничества, которые помогут нам работать комфортно и продуктивно. Давайте уважать друг друга.
                 </p>
                 <div class="status">
                     <span class="pulse"></span>
@@ -440,7 +483,7 @@
                     <i class="fas fa-images card-icon"></i> Портфолио
                 </h2>
                 <p class="card-description">
-                    Посмотрите примеры моих работ и оцените стиль исполнения перед заказом.
+                    Посмотрите примеры моих работ и оцените стиль исполнения перед заказом. Вдохновляйтесь и находите идеи.
                 </p>
                 <div class="status">
                     <span class="pulse"></span>
@@ -448,16 +491,12 @@
                 </div>
             </a>
         </div>
-       
-            </div>
-
-       
     </div>
 
     <script>
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = 200;
+            const starCount = 250;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
@@ -472,7 +511,7 @@
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 
-                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.animationDelay = Math.random() * 8 + 's';
                 
                 starsContainer.appendChild(star);
             }
@@ -481,10 +520,10 @@
                 const shootingStar = document.createElement('div');
                 shootingStar.className = 'shooting-star';
                 
-                shootingStar.style.left = Math.random() * 20 + '%';
-                shootingStar.style.top = Math.random() * 20 + '%';
+                shootingStar.style.left = Math.random() * 15 + '%';
+                shootingStar.style.top = Math.random() * 15 + '%';
                 
-                const duration = Math.random() * 3 + 2;
+                const duration = Math.random() * 3 + 2.5;
                 shootingStar.style.setProperty('--shooting-duration', duration + 's');
                 
                 starsContainer.appendChild(shootingStar);
@@ -494,57 +533,35 @@
                 }, duration * 1000);
             }
             
-            setInterval(createShootingStar, Math.random() * 5000 + 3000);
+            setInterval(createShootingStar, Math.random() * 6000 + 4000);
             
-            for (let i = 0; i < 3; i++) {
-                setTimeout(createShootingStar, Math.random() * 2000);
+            for (let i = 0; i < 2; i++) {
+                setTimeout(createShootingStar, Math.random() * 3000);
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card');
             const avatar = document.querySelector('.avatar');
-            const socialLinks = document.querySelectorAll('.social-link');
             
             createStars();
             
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.zIndex = '10';
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.zIndex = '1';
                 });
             });
             
             avatar.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05)';
-                this.style.boxShadow = '0 0 35px rgba(233, 69, 96, 0.7)';
+                this.style.transform = 'scale(1.08)';
             });
             
             avatar.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1)';
-                this.style.boxShadow = '0 0 25px rgba(233, 69, 96, 0.5)';
-            });
-            
-            socialLinks.forEach(link => {
-                link.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.1)';
-                });
-                
-                link.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        });
-                document.querySelectorAll('.social-link').forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.zIndex = '10';
-            });
-            
-            link.addEventListener('mouseleave', function() {
-                this.style.zIndex = '1';
             });
         });
     </script>
