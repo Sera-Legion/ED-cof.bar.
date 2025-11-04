@@ -14,7 +14,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #050510 0%, #0a0a1a 30%, #0c0c1f 60%, #080814 100%);
             color: #fff;
             min-height: 100vh;
             padding: 20px;
@@ -36,7 +36,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #e94560;
+            color: #ffd78e;
             text-decoration: none;
             font-weight: 500;
             margin-bottom: 20px;
@@ -51,14 +51,18 @@
             font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #e94560, #533483);
+            background: #ffd78e;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
+        i {
+            color: #ffd78e;
+        }
         .page-subtitle {
+            color: #d0d0d0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
             font-size: 1.1rem;
             opacity: 0.8;
             margin-bottom: 30px;
@@ -74,17 +78,17 @@
             margin: 40px 0;
             gap: 15px;
             font-size: 1.3rem;
-            color: #e94560;
+            color: #ffd78e; 
         }
         
         .divider-line {
             height: 1px;
             width: 100px;
-            background: linear-gradient(90deg, transparent, #e94560, transparent);
+            background: linear-gradient(90deg, transparent, #d4af37, #d4af37, transparent);
         }
         
         .section {
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(145deg, rgba(20, 20, 35, 0.9), rgba(10, 10, 25, 0.95));
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
@@ -105,7 +109,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: #e94560;
+
         }
         
         .section-title i {
@@ -117,12 +121,11 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            border-left: 4px solid #e94560;
+            border-left: 4px solid #4a235a;
         }
         
         .info-card h3 {
             margin-bottom: 15px;
-            color: #e94560;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -141,7 +144,7 @@
         
         .rules-list li:before {
             content: "•";
-            color: #e94560;
+            color: #ffd78e;
             font-size: 1.5rem;
             position: absolute;
             left: 0;
@@ -149,11 +152,11 @@
         }
         
         .highlight {
-            background: rgba(233, 69, 96, 0.15);
+            background: linear-gradient(135deg, rgba(74, 35, 90, 0.3), rgba(44, 25, 55, 0.5));
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
-            border-left: 4px solid #e94560;
+            border-left: 4px solid #4a235a;
         }
         
         .stage-number {
@@ -162,7 +165,7 @@
             justify-content: center;
             width: 30px;
             height: 30px;
-            background: #e94560;
+            background: #4a235a;
             color: white;
             border-radius: 50%;
             margin-right: 10px;
@@ -183,7 +186,7 @@
             padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
-            color: #fff;
+            color: #ffd78e;
             font-weight: 500;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
@@ -239,20 +242,21 @@
 
         .footer p {
             font-size: larger;
+            color: #ffd78e;
         }
 
         hr {
-            border: solid 1px #fff;
+            border: solid 1px #ffd78e;
             width: 800px;
             height: 2px;
-            background-color: #fff;
+            background-color: #ffd78e;
             margin: 10px 0;
         }
 
         .footer-links {
             display: flex;
             gap: 15px;
-            border: 1px solid #fff;
+            border: 1px solid #ffd78e;
             padding: 10px;
             border-radius: 15px;
         }
@@ -449,6 +453,7 @@
                 }
 
         @media (max-width: 480px) {
+
             .social-container {
                 padding: 30px 20px;
             }
@@ -470,8 +475,24 @@
             .social-text {
                 font-size: 1.1rem;
             }
-        }
+            .divider {
+                font-size: 1rem;
+            }
 
+            .info-card {
+                padding: 15px;
+
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+        @media (max-width: 380px) {
+                .info-card h3 {
+                font-size: medium;
+            }
+        }
     </style>
 </head>
 <body>
@@ -489,9 +510,7 @@
         </div>
         
         <div class="divider">
-            <div class="divider-line"></div>
-            <div>★ Этап 1. Задумка ★</div>
-            <div class="divider-line"></div>
+            <div>✦ •┈┈⋅⋯ ★ Этап 1. Задумка ★ ⋯⋅┈┈• ✦</div>
         </div>
         
         <div class="section">
@@ -519,9 +538,7 @@
         </div>
         
         <div class="divider">
-            <div class="divider-line"></div>
-            <div>★ Этап 2. Персонаж ★</div>
-            <div class="divider-line"></div>
+            <div>✦ •┈┈⋅⋯ ★ Этап 2. Персонаж ★ ⋯⋅┈┈• ✦</div>
         </div>
         
         <div class="section">
@@ -547,9 +564,7 @@
         </div>
         
         <div class="divider">
-            <div class="divider-line"></div>
-            <div>★ Этап 3. Правки ★</div>
-            <div class="divider-line"></div>
+            <div>✦ •┈┈⋅⋯ ★ Этап 3. Правки ★ ⋯⋅┈┈• ✦</div>
         </div>
         
         <div class="section">
@@ -594,7 +609,7 @@
         </div>
         
 <div class="footer">
-            <p><b>Сделано с 🤍 | ЕDNA</b></p>
+            <p><b>Сделано с 💛 | ЕDNA</b></p>
             <hr>
             <p><b>Обратная связь</b></p>
             <div class="footer-links">
@@ -610,7 +625,7 @@
                 </div>
             </a>
             
-            <a href="#" class="social-link telegram">
+            <a href="https://t.me/tz1EDNA" class="social-link telegram">
                 <div class="social-icon">
                     <div class="icon-placeholder"><img alt="tg" src="img/tg.svg"></div>
                 </div>
